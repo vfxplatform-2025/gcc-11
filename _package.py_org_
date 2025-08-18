@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+
+name = 'gcc'
+
+version = '11.5.0'
+
+description = "GNU Compiler Collection (Rocky Linux optimized)"
+
+authors = ['GNU']
+
+tools = [
+    'gcc',
+    'g++',
+    'c++',
+    'cpp',
+    'gcc-ar',
+    'gcc-ranlib',
+    'gfortran',
+    'gcc-nm',
+    'gcov'
+]
+
+
+variants = [['platform_linux']]
+
+build_command='python {root}/rezbuild.py {install}'
+
+def commands():
+    env.PATH.append("{root}/bin")
+    env.LD_LIBRARY_PATH.prepend("{root}/lib64")
+
+    env.CC = "{root}/bin/gcc"
+    env.CXX = "{root}/bin/g++"
+    env.FC = "{root}/bin/gfortran"
+    env.GCC_VERSION = str(version)
+    # env.set("CC", "{root}/bin/gcc")
+    # env.set("CXX", "{root}/bin/g++")
+    # env.set("FC", "{root}/bin/gfortran")
+
+    # if building:
+    #     env.CC = "{root}/bin/gcc"
+    #     env.CXX = "{root}/bin/g++"
+    #     env.FC = "{root}/bin/gfortran"
+
+
+
+
+
+
